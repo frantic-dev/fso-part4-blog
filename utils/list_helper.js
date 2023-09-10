@@ -13,6 +13,15 @@ const favoriteBlog = (blogs) => {
   return sortedBlogs[0]
 }
 
+
+const _ = require('lodash')
+
+const mostBlogs = (blogs) => {
+  const orderedBlogs =_.sortBy(blogs, ['blogs'])
+  console.log(orderedBlogs);
+  return orderedBlogs[orderedBlogs.length - 1]
+}
+
 module.exports = {
-  dummy, totalLikes, favoriteBlog
+  dummy, totalLikes, favoriteBlog, mostBlogs
 }
