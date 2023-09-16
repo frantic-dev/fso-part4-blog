@@ -28,13 +28,35 @@ test('get correct amount of blog posts', async () => {
   expect(response.body).toHaveLength(helper.initialBlogs.length)
 }, 100000)
 
-test.only('should verify the existence of id property', async () => {
+test('should verify the existence of id property', async () => {
   const response = await api.get('/api/blogs')
   const blogs = response.body
 
   for (const blog of blogs) {
     expect(blog.id).toBeDefined()
   }
+})
+
+test.only('should add a valid blog', async () => {
+  const newBlog = {
+    title: 'new blog',
+    author: 'me',
+    url: 'newblog.net',
+    likes: 45454,
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  console.log(blogsAtEnd);
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+
+  const urls = blogsAtEnd.map(r => r.url)
+  expect(urls).toContain('newblog.net')
 })
 
 afterAll(async () => {
