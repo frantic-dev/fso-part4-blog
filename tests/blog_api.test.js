@@ -101,6 +101,21 @@ test('should not add a blog missing the url', async () => {
   expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
 })
 
+test('should delete blog', async () => {
+  const blogsAtStart = await helper.blogsInDb()
+  const blogToDelete = blogsAtStart[0]
+
+  await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204)
+
+  const blogsAtEnd = await helper.blogsInDb()
+
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length - 1)
+
+  const urls = blogsAtEnd.map(blog => blog.url)
+
+  expect(blogsAtEnd).not.toContain(blogToDelete.url)
+})
+
 afterAll(async () => {
   await mongoose.connection.close()
 })
