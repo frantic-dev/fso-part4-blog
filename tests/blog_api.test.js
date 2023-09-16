@@ -23,7 +23,6 @@ test('should return blogs as json', async () => {
 
 test('get correct amount of blog posts', async () => {
   const response = await api.get('/api/blogs')
-  console.log(response.body)
 
   expect(response.body).toHaveLength(helper.initialBlogs.length)
 }, 100000)
@@ -52,14 +51,13 @@ test('should add a valid blog', async () => {
     .expect('Content-Type', /application\/json/)
 
   const blogsAtEnd = await helper.blogsInDb()
-  console.log(blogsAtEnd)
   expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
 
   const urls = blogsAtEnd.map(r => r.url)
   expect(urls).toContain('newblog.net')
 })
 
-test.only('should default number of likes to zero if the likes property is missing', async () => {
+test('should default number of likes to zero if the likes property is missing', async () => {
   const blogMissingLikes = {
     title: 'blog missing the likes',
     author: 'me again',
@@ -75,6 +73,32 @@ test.only('should default number of likes to zero if the likes property is missi
   const blogsAtEnd = await helper.blogsInDb()
   expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
   expect(blogsAtEnd[helper.initialBlogs.length].likes).toEqual(0)
+})
+
+test('should not add a blog missing the title', async () => {
+  const blogMissingTitle = {
+    author: 'me otra vez',
+    url: 'blogmissingtitle.net',
+    likes: 345,
+  }
+
+  await api.post('/api/blogs').send(blogMissingTitle).expect(400)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
+})
+
+test('should not add a blog missing the url', async () => {
+  const blogMissingUrl = {
+    title: 'blog missing the url',
+    author: 'me encore',
+    likes: 1,
+  }
+
+  await api.post('/api/blogs').send(blogMissingUrl).expect(400)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
 })
 
 afterAll(async () => {

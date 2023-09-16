@@ -6,7 +6,6 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-  "title": "take your time",
   "author": "shawty",
   "url": "falty.net",
   "likes": 23232
