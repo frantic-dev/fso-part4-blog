@@ -37,7 +37,7 @@ test('should verify the existence of id property', async () => {
   }
 })
 
-test.only('should add a valid blog', async () => {
+test('should add a valid blog', async () => {
   const newBlog = {
     title: 'new blog',
     author: 'me',
@@ -52,11 +52,29 @@ test.only('should add a valid blog', async () => {
     .expect('Content-Type', /application\/json/)
 
   const blogsAtEnd = await helper.blogsInDb()
-  console.log(blogsAtEnd);
+  console.log(blogsAtEnd)
   expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
 
   const urls = blogsAtEnd.map(r => r.url)
   expect(urls).toContain('newblog.net')
+})
+
+test.only('should default number of likes to zero if the likes property is missing', async () => {
+  const blogMissingLikes = {
+    title: 'blog missing the likes',
+    author: 'me again',
+    url: 'blogwithnolikes.com',
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(blogMissingLikes)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+  expect(blogsAtEnd[helper.initialBlogs.length].likes).toEqual(0)
 })
 
 afterAll(async () => {
