@@ -10,3 +10,14 @@ Content-Type: application/json
   "url": "falty.net",
   "likes": 23232
 }
+
+###
+
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username" : "miukkai",
+  "name": "Matti Luukkainen",
+  "password" : "matti"
+}
