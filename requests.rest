@@ -21,3 +21,18 @@ Content-Type: application/json
   "name": "Matti Luukkainen",
   "password" : "matti"
 }
+
+###
+
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username" : "mii",
+  "name": "Matti Luukkainen",
+  "password" : "mid"
+}
+
+###
+
+GET http://localhost:3001/api/users
