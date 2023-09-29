@@ -6,9 +6,11 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
+  "title": "makes you feel alone",
   "author": "shawty",
   "url": "falty.net",
-  "likes": 23232
+  "likes": 23232,
+  "userId": "6510788d8e545025326675c6"
 }
 
 ###
