@@ -44,3 +44,15 @@ Content-Type: application/json
   "username": "miukkai",
   "password": "matti"
 }
+
+### create a new blog with a logged in user
+post http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pdWtrYWkiLCJpZCI6IjY1MTA3ODhkOGU1NDUwMjUzMjY2NzVjNiIsImlhdCI6MTY5NjI1MjY2Nn0.85Z2M-kK--XWwmqX85GmnfoK2EOE6cP478Fykvmn2vc
+
+{
+  "title": "its you",
+  "author": "homeboi",
+  "url": "vscode.ma",
+  "likes": 5455
+}
