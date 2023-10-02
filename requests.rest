@@ -28,9 +28,9 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "username" : "mii",
-  "name": "Matti Luukkainen",
-  "password" : "mid"
+  "username" : "stop",
+  "name": "stop stop",
+  "password" : "stop"
 }
 
 ###get all users
@@ -41,18 +41,18 @@ post http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username": "miukkai",
-  "password": "matti"
+  "username": "stop",
+  "password": "stop"
 }
 
 ### create a new blog with a logged in user
 post http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pdWtrYWkiLCJpZCI6IjY1MTA3ODhkOGU1NDUwMjUzMjY2NzVjNiIsImlhdCI6MTY5NjI1MjY2Nn0.85Z2M-kK--XWwmqX85GmnfoK2EOE6cP478Fykvmn2vc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN0b3AiLCJpZCI6IjY1MWFkODA2OWM3NmVhOWUyMzNkY2E5YSIsImlhdCI6MTY5NjI1ODA3M30.ks9ZE7dP3pVgPLEoyCGlMkaxpSHwO1TS0a_IrkCESos
 
 {
-  "title": "its you",
-  "author": "homeboi",
-  "url": "vscode.ma",
-  "likes": 5455
+  "title": "keep stopping",
+  "author": "the stop homeboi",
+  "url": "stop.ma",
+  "likes": 5704
 }
