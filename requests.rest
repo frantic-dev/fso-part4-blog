@@ -48,7 +48,7 @@ Content-Type: application/json
 ### create a new blog with a logged in user
 post http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN0b3AiLCJpZCI6IjY1MWFkODA2OWM3NmVhOWUyMzNkY2E5YSIsImlhdCI6MTY5NjI3MDE0Nn0.uPBf_eFXRorwrd_O8tRkKYWjTvN2TpHRgYTeUOZEo-c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN0b3AiLCJpZCI6IjY1MWFkODA2OWM3NmVhOWUyMzNkY2E5YSIsImlhdCI6MTY5NjM2MzI4Nn0.Mu90GVK7Fr_IR5m2XNDtiK72ducx-rtsS8yw9mMQph8
 
 {
   "title": "keep stopping",
@@ -60,3 +60,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN0b
 ### user deletes his blog
 delete http://localhost:3001/api/blogs/65175926d26572740d9fa4ba
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN0b3AiLCJpZCI6IjY1MWFkODA2OWM3NmVhOWUyMzNkY2E5YSIsImlhdCI6MTY5NjI3MDE0Nn0.uPBf_eFXRorwrd_O8tRkKYWjTvN2TpHRgYTeUOZEo-c
+
+
+### update a blog's likes
+PUT http://localhost:3001/api/blogs/651f16f101dec7a70703bef3
+Content-Type: application/json
+
+{
+  "title": "testing author",
+  "author": "test",
+  "url": "test",
+  "likes": 2
+}
+
+### get specific blog 
+GET http://localhost:3001/api/blogs/651f16f101dec7a70703bef3
