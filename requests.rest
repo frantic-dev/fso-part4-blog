@@ -75,3 +75,11 @@ Content-Type: application/json
 
 ### get specific blog 
 GET http://localhost:3001/api/blogs/651f16f101dec7a70703bef3
+
+### post a comment on a blog 
+POST  http://localhost:3001/api/blogs/651756a705bfd5e722a9b164/comments
+Content-Type: application/json
+
+{
+  "comment": "awesome blog"
+}
